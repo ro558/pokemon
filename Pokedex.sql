@@ -1,5 +1,5 @@
 create database Pokedex;
-create table tb_pokemons (
+create table Pokedex.tb_pokemons (
 	id int(10) not null auto_increment primary key,
 	nome varchar(50) not null,
 	tipo_1 varchar(10) not null,
