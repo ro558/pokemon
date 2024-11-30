@@ -7,7 +7,7 @@ from mysql.connector import connect
 def tela_biografia(numero: int):
     banco = connect(host='localhost', user='root', password='', database='Pokedex')
     cursor = banco.cursor()
-    cursor.execute('select * from tb_pokemons where id = numero;')
+    cursor.execute('select * from tb_pokemons where id = ' + str(numero))
     dados = cursor.fetchall()
     cursor.close()
     banco.close()
@@ -24,7 +24,8 @@ def tela_biografia(numero: int):
 
     # Tentar carregar imagem
     try:
-        imagem = PhotoImage(file=dados[4])  # Substitua "imagem.png" pelo caminho da imagem
+        print(dados[0][4])
+        imagem = PhotoImage(file=dados[0][4])  # Substitua "imagem.png" pelo caminho da imagem
         imagem_label = tk.Label(janela, image=imagem)
         imagem_label.image = imagem  # Manter referência à imagem
         imagem_label.pack(pady=10)  # Exibe imagem abaixo do título
@@ -49,4 +50,5 @@ def tela_biografia(numero: int):
     janela.mainloop()
 
 # Chama a função para mostrar a janela
-tela_biografia()
+if __name__ == '__main__':
+    tela_biografia(1)

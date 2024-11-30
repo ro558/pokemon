@@ -6,7 +6,7 @@ create table Pokedex.tb_pokemons (
 	tipo_2 varchar(10),
 	foto varchar(100) not null,
 	defesa int not null,
-	força int not null,
+	hp int not null,
 	ataque int not null,
 	descrição varchar(500)
 );
