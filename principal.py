@@ -26,10 +26,10 @@ if __name__ == '__main__':
     titulo = Label(master, text='Pokedex')
     titulo.pack()
 
-    gerenciar = Button(master, text='Tela de CRUD', command=None)
+    gerenciar = Button(master, text='Tela de CRUD', command=gerir)
     gerenciar.place(relx=0.3, rely=0.5, anchor=CENTER)
 
-    visualizar = Button(master, text='Ver pokemons', command=None)
+    visualizar = Button(master, text='Ver pokemons', command=ver)
     visualizar.place(relx=0.7, rely=0.5, anchor=CENTER)
 
     mainloop()
