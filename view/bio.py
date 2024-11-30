@@ -1,9 +1,18 @@
 import tkinter as tk
 from tkinter import PhotoImage
 from tkinter import messagebox
+from mysql.connector import connect
 
 # Função principal para criar a tela
-def tela_biografia():
+def tela_biografia(numero: int):
+    banco = connect(host='localhost', user='root', password='', database='Pokedex')
+    cursor = banco.cursor()
+    cursor.execute('select * from tb_pokemons where id = numero;')
+    dados = cursor.fetchall()
+    cursor.close()
+    banco.close()
+    del cursor, banco
+
     janela = tk.Tk()
     janela.title("𝚋𝚒𝚘𝚐𝚛𝚊𝚏𝚒𝚊")
     janela.geometry("600x500")
@@ -15,7 +24,7 @@ def tela_biografia():
 
     # Tentar carregar imagem
     try:
-        imagem = PhotoImage(file="imagem.png")  # Substitua "imagem.png" pelo caminho da imagem
+        imagem = PhotoImage(file=dados[4])  # Substitua "imagem.png" pelo caminho da imagem
         imagem_label = tk.Label(janela, image=imagem)
         imagem_label.image = imagem  # Manter referência à imagem
         imagem_label.pack(pady=10)  # Exibe imagem abaixo do título
@@ -23,7 +32,7 @@ def tela_biografia():
         messagebox.showwarning("Erro", "A imagem não pôde ser carregada!")  # Exibe um aviso se a imagem não for carregada
 
     # Texto da biografia alinhado à direita
-    biografia_texto = """"""
+    biografia_texto = dados[-1]
 
     biografia_label = tk.Label(janela, text=biografia_texto, font=("Helvetica", 10), justify="left", fg="red", bg="black", wraplength=500)
     biografia_label.pack(side="right", padx=20, pady=10, anchor="e")  # Alinha à direita e adiciona margem

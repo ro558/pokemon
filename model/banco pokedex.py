@@ -1,7 +1,10 @@
 from mysql.connector import connect
 from os import path
+from plataform import system
 
-endereco = path.dirname(path.realpath(__file__)).removesuffix('model') + '\\\\assets'
+
+SEPARADOR = '\\\\'
+endereco = path.dirname(path.realpath(__file__)).removesuffix('model') + SEPARADOR + 'assets'
 pokemons = [
     [1, 'Bulbassauro', 'Grama', 'Venenoso', endereco + '\\\\1.png', 5, 5, 5, 'descrição'],
     [2, 'Ivyssauro', 'Grama', 'Venenoso', endereco + '\\\\2.png', 5, 5, 5, 'descrição'],
