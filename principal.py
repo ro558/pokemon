@@ -14,7 +14,7 @@ def gerir():
 
 
 def ver():
-    from view.personagens import personagens
+    from view.personagens import personagem
     destruir()
     personagem()
 
