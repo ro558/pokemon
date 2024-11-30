@@ -1,4 +1,4 @@
-from crud.conn import *
+from model.conn import *
 def salvar(nome,tipo1,tipo2,foto,descricao,hp,forca,defesa):
     sql = "INSERT INTO tb_pokemons (nome,tipo1,tipo2,foto,descricao,hp,forca,defesa) VALUES (%s, %s,%s, %s,%s, %s,%s, %s)"
     val = (nome,tipo1,tipo2,foto,descricao,hp,forca,defesa)

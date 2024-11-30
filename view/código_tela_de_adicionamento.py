@@ -1,6 +1,6 @@
 from tkinter import Tk, Frame, Label, Button, END
 from tkinter import ttk
-from crud.crud import select
+from model.crud import select
 
 
 janela = Tk()
