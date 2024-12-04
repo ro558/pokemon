@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Entry, Button, Entry, END
+from tkinter import Toplevel, Label, Entry, Button, Entry, END
 from tkinter import ttk
 import mysql.connector
 
@@ -6,7 +6,7 @@ import mysql.connector
 class personagem():
 
     def __init__(self,):
-        self.janela = Tk()
+        self.janela = Toplevel()
         self.atores()
 
         self.titulo = Label(self.janela, text='Pokedex')
@@ -80,7 +80,8 @@ class personagem():
         return tuple(resultados)
 
     def bio(self):
-        # Função que vai chamar a tela de biografia.
+        from view.bio import bio
+        bio()
         pass
 
 
