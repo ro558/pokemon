@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from tkinter import Tk, Label, Entry, Button, END
+=======
+from tkinter import Toplevel, Label, Entry, Button, Entry, END
+>>>>>>> 3bfaddea71dfa3c92096b546a4762b8206219476
 from tkinter import ttk
 import mysql.connector
 
@@ -6,7 +10,7 @@ import mysql.connector
 class personagem():
 
     def __init__(self,):
-        self.janela = Tk()
+        self.janela = Toplevel()
         self.atores()
 
         self.titulo = Label(self.janela, text='Pokedex')
@@ -80,6 +84,7 @@ class personagem():
         return tuple(resultados)
 
     def bio(self):
+<<<<<<< HEAD
         from view.bio import tela_biografia
         selecao = self.tabela_sono.set(self.tabela_sono.selection())
         self.tabela_sono.selection_clear()
@@ -87,6 +92,11 @@ class personagem():
         if selecao.get('id') is None:
             return
         tela_biografia(int(selecao.get('id')))
+=======
+        from view.bio import bio
+        bio()
+        pass
+>>>>>>> 3bfaddea71dfa3c92096b546a4762b8206219476
 
 
 if __name__ == '__main__':
