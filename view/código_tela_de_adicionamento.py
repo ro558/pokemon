@@ -1,6 +1,6 @@
 from tkinter import Toplevel, Frame, Label, Button, END
 from tkinter import ttk
-from model.crud import select
+from model.crud import select, delete
 
 
 class Tela():
@@ -40,12 +40,20 @@ class Tela():
 
     def botao(self):
 
-        self.pesquisar = botao1 = Button(self.janela, text="Pesquisar")
-        self.pesquisar = botao1.place(relx=0.30, rely=0.9, relwidth=0.1,
-                                      relheight=0.05)
+        # self.pesquisar = botao1 = Button(self.janela, text="Pesquisar")
+        # self.pesquisar = botao1.place(relx=0.30, rely=0.9, relwidth=0.1,
+        #                               relheight=0.05)
 
-        botao2 = Button(self.janela, text="Deletar")
-        botao2.place(relx=0.55, rely=0.9, relwidth=0.1, relheight=0.05)
+        self.botao2 = Button(self.janela, text="Deletar", command=self.deletar)
+        self.botao2.place(relx=0.55, rely=0.9, relwidth=0.1, relheight=0.05)
+
+    def deletar(self):
+        registro = self.tabela_sono.set(self.tabela_sono.selection()).get('id')
+        if registro is None:
+            return
+        delete(int(registro))
+        self.tabela_sono.destroy()
+        self.atores()
 
     def atores(self, pesquisa=False):
 
