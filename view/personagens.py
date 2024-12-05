@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-from tkinter import Tk, Label, Entry, Button, END
-=======
 from tkinter import Toplevel, Label, Entry, Button, Entry, END
->>>>>>> 3bfaddea71dfa3c92096b546a4762b8206219476
 from tkinter import ttk
 import mysql.connector
 
