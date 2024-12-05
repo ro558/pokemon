@@ -18,9 +18,9 @@ class personagem():
         self.caixa1 = Entry(self.janela)
         self.caixa1.place(relx=0.2, rely=0.2)
 
-        self.pesquisar = Button(self.janela, text='pesquisar',
-                                command=self.pesquisar)
-        self.pesquisar.place(relx=0.5, rely=0.19)
+        self.pesquisa = Button(self.janela, text='pesquisar',
+                                command=self.mostrar_resultados)
+        self.pesquisa.place(relx=0.5, rely=0.19)
 
         self.bio = Button(self.janela, text='Biografia', command=self.bio)
         self.bio.place(relx=0.5, rely=0.8, anchor='center')
