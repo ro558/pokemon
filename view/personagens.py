@@ -1,4 +1,4 @@
-from tkinter import Toplevel, Label, Button, Entry, END
+from tkinter import Toplevel, Label, Button, Entry, END, Scrollbar
 from tkinter import ttk
 import mysql.connector
 
@@ -33,7 +33,13 @@ class personagem():
                                         show="headings",
                                         columns=("id", "nome"))
         self.tabela_sono.place(rely=0.25, relx=0.2)
-
+        try:
+            self.rolagem.config(command=self.tabela_sono.yview)
+        except:
+            self.rolagem = Scrollbar(self.janela, orient='vertical',
+                                     command=self.tabela_sono.yview)
+            self.rolagem.pack(side='right', fill='y')
+        self.tabela_sono.config(yscrollcommand=self.rolagem.set)
         self.tabela_sono.heading("id", text="Nº")
         self.tabela_sono.heading("nome", text="Nome")
 
