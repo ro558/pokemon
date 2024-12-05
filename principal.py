@@ -2,14 +2,14 @@ from tkinter import Tk, Label, Button, CENTER, mainloop
 
 
 def gerir():
-    global master
     from view.código_tela_de_adicionamento import Tela
+    global master
     Tela(master)
 
 
 def ver():
-    global master
     from view.personagens import personagem
+    global master
     personagem(master)
 
 

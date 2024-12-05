@@ -40,11 +40,11 @@ class Tela():
 
     def botao(self):
 
-        self.pesquisar = botao1 = Button(text="Pesquisar")
+        self.pesquisar = botao1 = Button(self.janela, text="Pesquisar")
         self.pesquisar = botao1.place(relx=0.30, rely=0.9, relwidth=0.1,
                                       relheight=0.05)
 
-        botao2 = Button(text="Deletar")
+        botao2 = Button(self.janela, text="Deletar")
         botao2.place(relx=0.55, rely=0.9, relwidth=0.1, relheight=0.05)
 
     def atores(self, pesquisa=False):
