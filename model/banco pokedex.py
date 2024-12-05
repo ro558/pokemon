@@ -165,7 +165,6 @@ banco = connect(
 )
 cursor = banco.cursor()
 for pokemon in pokemons:
-    pokemon = tuple(pokemon)
     cursor.execute('insert into tb_pokemons (id, nome, tipo_1, tipo_2, foto, ataque, defesa, hp, descrição) values (%s, %s, %s, %s, %s, %s, %s, %s, %s);', pokemon)
 banco.commit()
 cursor.close()
