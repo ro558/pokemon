@@ -1,4 +1,4 @@
-from tkinter import Toplevel, Label, Entry, Button, Entry, END
+from tkinter import Toplevel, Label, Button, Entry, END
 from tkinter import ttk
 import mysql.connector
 
@@ -23,7 +23,7 @@ class personagem():
         self.pesquisa.place(relx=0.5, rely=0.19)
 
         self.bio = Button(self.janela, text='Biografia', command=self.bio)
-        self.bio.place(relx=0.5, rely=0.8, anchor='center')
+        self.bio.pack(side='bottom', fill='x')
 
         self.janela.geometry("720x480")
 
@@ -43,8 +43,8 @@ class personagem():
             registros = self.pesquisar()
         else:
             registros = self.select()
-            for registro in registros:
-                self.tabela_sono.insert("", END, values=registro)
+        for registro in registros:
+            self.tabela_sono.insert("", END, values=registro)
 
     def select(self):
 
@@ -72,15 +72,14 @@ class personagem():
         self.atores(True)
 
     def pesquisar(self):
-        prompt = self.caixa1.get()
+        prompt = self.caixa1.get().capitalize()
         resultados = list()
         for resultado in self.select():
             if resultado[1].startswith(prompt):
-                resultados.append(resultado[1])
+                resultados.append(resultado)
         return tuple(resultados)
 
     def bio(self):
-<<<<<<< HEAD
         from view.bio import tela_biografia
         selecao = self.tabela_sono.set(self.tabela_sono.selection())
         self.tabela_sono.selection_clear()
@@ -88,11 +87,6 @@ class personagem():
         if selecao.get('id') is None:
             return
         tela_biografia(int(selecao.get('id')))
-=======
-        from view.bio import bio
-        bio()
-        pass
->>>>>>> 3bfaddea71dfa3c92096b546a4762b8206219476
 
 
 if __name__ == '__main__':
