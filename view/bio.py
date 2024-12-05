@@ -25,7 +25,6 @@ def tela_biografia(numero: int, master):
 
     # Tentar carregar imagem
     try:
-        print(dados[0][4])
         imagem = ImageTk.PhotoImage(Image.open(dados[0][4]))
         imagem_label = tk.Label(janela, image=imagem)
         imagem_label.image = imagem  # Manter referência à imagem
