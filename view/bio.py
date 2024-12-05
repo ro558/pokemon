@@ -1,7 +1,8 @@
 import tkinter as tk
-from tkinter import PhotoImage
 from tkinter import messagebox
+from PIL import Image, ImageTk
 from mysql.connector import connect
+
 
 # Função principal para criar a tela
 def tela_biografia(numero: int):
@@ -13,7 +14,7 @@ def tela_biografia(numero: int):
     banco.close()
     del cursor, banco
 
-    janela = tk.Tk()
+    janela = tk.Toplevel()
     janela.title("𝚋𝚒𝚘𝚐𝚛𝚊𝚏𝚒𝚊")
     janela.geometry("600x500")
 
@@ -25,18 +26,23 @@ def tela_biografia(numero: int):
     # Tentar carregar imagem
     try:
         print(dados[0][4])
-        imagem = PhotoImage(file=dados[0][4])  # Substitua "imagem.png" pelo caminho da imagem
+        imagem = ImageTk.PhotoImage(Image.open(dados[0][4]))
         imagem_label = tk.Label(janela, image=imagem)
         imagem_label.image = imagem  # Manter referência à imagem
         imagem_label.pack(pady=10)  # Exibe imagem abaixo do título
     except Exception as e:
-        messagebox.showwarning("Erro", "A imagem não pôde ser carregada!")  # Exibe um aviso se a imagem não for carregada
+        messagebox.showwarning("Erro", "A imagem não pôde ser carregada!\n" +
+                               "{}".format(e.__str__()))
+        # Exibe um aviso se a imagem não for carregada
 
     # Texto da biografia alinhado à direita
     biografia_texto = dados[-1]
 
-    biografia_label = tk.Label(janela, text=biografia_texto, font=("Helvetica", 10), justify="left", fg="red", bg="black", wraplength=500)
-    biografia_label.pack(side="right", padx=20, pady=10, anchor="e")  # Alinha à direita e adiciona margem
+    biografia_label = tk.Label(janela, text=biografia_texto,
+                               font=("Helvetica", 10), justify="left",
+                               fg="red", bg="black", wraplength=500)
+    biografia_label.pack(side="right", padx=20, pady=10, anchor="e")
+    # Alinha à direita e adiciona margem
 
     # Frame para o botão de fechar
     fechar_frame = tk.Frame(janela, bg="black")  # Criar um frame com fundo preto

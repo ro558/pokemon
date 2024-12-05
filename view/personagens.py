@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Entry, Button, Entry, END
+from tkinter import Tk, Label, Entry, Button, END
 from tkinter import ttk
 import mysql.connector
 
@@ -19,7 +19,7 @@ class personagem():
         self.caixa1.place(relx=0.2, rely=0.2)
 
         self.pesquisa = Button(self.janela, text='pesquisar',
-                                command=self.mostrar_resultados)
+                               command=self.mostrar_resultados)
         self.pesquisa.place(relx=0.5, rely=0.19)
 
         self.bio = Button(self.janela, text='Biografia', command=self.bio)
@@ -35,8 +35,8 @@ class personagem():
                                         columns=("id", "nome"))
         self.tabela_sono.place(rely=0.25, relx=0.2)
 
-        self.tabela_sono.heading("id", text="id")
-        self.tabela_sono.heading("nome", text="nome")
+        self.tabela_sono.heading("id", text="Nº")
+        self.tabela_sono.heading("nome", text="Nome")
 
         # os registros vão ser pegos do banco de dados
         if pesquisa:
@@ -80,8 +80,13 @@ class personagem():
         return tuple(resultados)
 
     def bio(self):
-        # Função que vai chamar a tela de biografia.
-        pass
+        from view.bio import tela_biografia
+        selecao = self.tabela_sono.set(self.tabela_sono.selection())
+        self.tabela_sono.selection_clear()
+        self.tabela_sono.place(rely=0.25, relx=0.2)
+        if selecao.get('id') is None:
+            return
+        tela_biografia(int(selecao.get('id')))
 
 
 if __name__ == '__main__':
