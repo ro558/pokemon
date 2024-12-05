@@ -5,7 +5,7 @@ from mysql.connector import connect
 
 
 # Função principal para criar a tela
-def tela_biografia(numero: int):
+def tela_biografia(numero: int, master):
     banco = connect(host='localhost', user='root', password='', database='Pokedex')
     cursor = banco.cursor()
     cursor.execute('select * from tb_pokemons where id = ' + str(numero))
@@ -14,7 +14,7 @@ def tela_biografia(numero: int):
     banco.close()
     del cursor, banco
 
-    janela = tk.Toplevel()
+    janela = tk.Toplevel(master)
     janela.title("𝚋𝚒𝚘𝚐𝚛𝚊𝚏𝚒𝚊")
     janela.geometry("600x500")
 

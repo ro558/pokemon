@@ -1,15 +1,12 @@
-from tkinter import Tk, Frame, Label, Button, END
+from tkinter import Toplevel, Frame, Label, Button, END
 from tkinter import ttk
 from model.crud import select
 
 
-janela = Tk()
-
-
 class Tela():
     # istanciamento da classe
-    def __init__(self):
-        self.janela = janela
+    def __init__(self, master):
+        self.janela = Toplevel(master)
         self.tela()
         self.frame()
         self.label()

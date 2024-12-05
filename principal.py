@@ -1,22 +1,16 @@
 from tkinter import Tk, Label, Button, CENTER, mainloop
 
 
-def destruir():
-    global visualizar, gerenciar
-    visualizar.destroy()
-    gerenciar.destroy()
-
-
 def gerir():
+    global master
     from view.código_tela_de_adicionamento import Tela
-    destruir()
-    Tela()
+    Tela(master)
 
 
 def ver():
+    global master
     from view.personagens import personagem
-    destruir()
-    personagem()
+    personagem(master)
 
 
 if __name__ == '__main__':

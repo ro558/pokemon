@@ -5,8 +5,8 @@ import mysql.connector
 
 class personagem():
 
-    def __init__(self,):
-        self.janela = Toplevel()
+    def __init__(self, master):
+        self.janela = Toplevel(master)
         self.atores()
 
         self.titulo = Label(self.janela, text='Pokedex')
@@ -26,7 +26,6 @@ class personagem():
         self.bio.pack(side='bottom', fill='x')
 
         self.janela.geometry("720x480")
-
         self.janela.mainloop()
 
     def atores(self, pesquisa=False):
@@ -86,7 +85,7 @@ class personagem():
         self.tabela_sono.place(rely=0.25, relx=0.2)
         if selecao.get('id') is None:
             return
-        tela_biografia(int(selecao.get('id')))
+        tela_biografia(int(selecao.get('id')), self.janela)
 
 
 if __name__ == '__main__':
